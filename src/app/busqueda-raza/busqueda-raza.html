@@ -1,5 +1,4 @@
- 
-  
+
   <div class="barraBusqueda">
      <div class="acciones">
     <table>
@@ -13,24 +12,24 @@
 
       <div class="busqueda">
        <input type="text" pInputText [(ngModel)]="camposBusqueda" />
-       <p-button label="Buscar Anillo" icon="pi pi-check"  (onClick)="buscar()" severity="danger" />
+       <p-button label="Buscar Raza" icon="pi pi-check"  (onClick)="buscar()" severity="danger" />
     </div>
     
-    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template #header>
+    <p-table [value]="razasFiltradas" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
         <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
+            <th>Nombre</th>
+            <th>Región Principal</th>
+            <th>Longevidad</th>
+            <th>Descripcion</th>
         </tr>
     </ng-template>
-    <ng-template #body let-product>
+    <ng-template pTemplate="body" let-raza>
         <tr>
-            <td>{{ product.code }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.quantity }}</td>
+            <td>{{ raza.nombre }}</td>
+            <td>{{ raza.regionPrincipal }}</td>
+            <td>{{ raza.longevidad }}</td>
+            <td>{{ raza.descripcion }}</td>
         </tr>
     </ng-template>
 </p-table>

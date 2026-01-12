@@ -3,20 +3,25 @@ import { Component } from '@angular/core';
  import { ButtonModule } from 'primeng/button';
  import { InputTextModule } from 'primeng/inputtext';
  import { CommonModule } from '@angular/common';
+ import { FormsModule } from '@angular/forms';
  import { RAZAS } from '../clases/razas';
  import { Raza } from '../interfaces/raza';
 
 @Component({
   selector: 'app-busqueda-raza',
-  imports: [TableModule,ButtonModule,InputTextModule,CommonModule],
+  standalone:true,
+  imports: [TableModule,ButtonModule,InputTextModule,CommonModule,FormsModule],
   templateUrl: './busqueda-raza.html',
   styleUrl: './busqueda-raza.css',
 })
 export class BusquedaRaza {
   razas = RAZAS;
 
-  razasFiltradas: Raza[] = this.razas
-  camposBusqueda: string = 'Elfo';
+  //se inicializa con todas las razas
+  razasFiltradas: Raza[] = this.razas;
+
+  camposBusqueda:string = '';
+
   buscar(){
     const t = this.camposBusqueda.toLowerCase();
     this.razasFiltradas = this.razas.filter(r => 
@@ -25,6 +30,8 @@ export class BusquedaRaza {
       r.longevidad.toLowerCase().includes(t) ||
       r.descripcion.toLowerCase().includes(t)
     );
+
+
   }
 
 }
