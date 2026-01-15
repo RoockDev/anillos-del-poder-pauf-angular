@@ -1,0 +1,12 @@
+.busqueda {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 2rem 0;
+}
+
+.contenedor-tabla{
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}

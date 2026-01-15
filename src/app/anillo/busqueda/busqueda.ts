@@ -5,12 +5,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 
 
 @Component({
   selector: 'app-busqueda',
-  imports: [InputTextModule,FormsModule,ButtonModule,CommonModule],
+  standalone: true,
+  imports: [InputTextModule, FormsModule, ButtonModule, CommonModule, RouterLink],
   templateUrl: './busqueda.html',
   styleUrl: './busqueda.css',
 })
@@ -20,7 +22,7 @@ export class Busqueda {
 
 
   anillosFiltrados: Anillo[] = this.anillo.anillos
-  campoBusqueda: string = 'pepe';
+  campoBusqueda: string = '';
   buscar() {
 
     const t = this.campoBusqueda.toLowerCase();

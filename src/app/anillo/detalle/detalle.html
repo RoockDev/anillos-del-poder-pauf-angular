@@ -3,13 +3,57 @@
     <table>
         <tr>
             <td><button routerLink="/buscar" id="buscarAnillo">Buscar Anillo</button></td>
-            <td><button id="crearAnillo">Crear Anillo</button></td>
+            <td><button routerLink="/detalle" id="crearAnillo">Crear Anillo</button></td>
         </tr>
     </table>
     </div>
     </div>
 
-    <div class="formulario">
-            <!--<label for="nombre">Nombre: </label>
-            <input id="nombre" value =" ">-->       
+    <div class="card-formulario">
+            <h2>Crear nuevo anillo</h2>
+            <form [formGroup]="formulario"(ngSubmit)="guardar()">
+
+                <div class="campo">
+                    <label for="nombre">Nombre del Anillo</label>
+                    <input type="text" id="nombre" pInputText formControlName="nombre" placeholder="Ej: Anillo único"/>
+
+                    @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+                        <small class="error">
+                            El nombre es obligatorio (minimo 3 letras).
+                        </small>
+                    }
+                </div>
+
+                <div class="campo">
+                    <label for="portador">Portador</label>
+                    <input type="text" id="portador" pInputText formControlName="portador" placeholder="Ej: Frodo"/>
+                    @if (formulario.get('portador')?.invalid && formulario.get('portador')?.touched) {
+                        <small class="error">El portador es obligatorio</small>
+                    }
+                </div>
+
+                <div class="campo">
+                    <label for="raza">Raza</label>
+                    <input type="text" id="raza" pInputText formControlName="raza" placeholder="Ej: Hobbyte">
+
+                    @if (formulario.get('raza')?.invalid && formulario.get('portador')?.touched) {
+                        <small class="error">La raza es obligatoria</small>
+                    }
+                </div>
+
+                <div class="campo">
+            <label for="poder">Poder</label>
+            <input id="poder" type="text" pInputText formControlName="poder" placeholder="Ej: Invisibilidad" />
+            
+            @if (formulario.get('poder')?.invalid && formulario.get('poder')?.touched) {
+                <small class="error">El poder es obligatorio.</small>
+            }
+        </div>
+        <div class="botones">
+            <button pButton type="submit" label="Guardar" [disabled]="formulario.invalid"></button>
+            <button pButton type="button" label="Limpiar" class="p-button-secondary" (click)="limpiar()"></button>
+        </div>
+
+
+            </form>    
     </div>

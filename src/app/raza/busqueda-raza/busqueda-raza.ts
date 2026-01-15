@@ -4,13 +4,14 @@ import { Component } from '@angular/core';
  import { InputTextModule } from 'primeng/inputtext';
  import { CommonModule } from '@angular/common';
  import { FormsModule } from '@angular/forms';
- import { RAZAS } from '../clases/razas';
- import { Raza } from '../interfaces/raza';
+ import { RAZAS } from '../../clases/razas';
+ import { Raza } from '../../interfaces/raza';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-busqueda-raza',
   standalone:true,
-  imports: [TableModule,ButtonModule,InputTextModule,CommonModule,FormsModule],
+  imports: [TableModule, ButtonModule, InputTextModule, CommonModule, FormsModule, RouterLink],
   templateUrl: './busqueda-raza.html',
   styleUrl: './busqueda-raza.css',
 })

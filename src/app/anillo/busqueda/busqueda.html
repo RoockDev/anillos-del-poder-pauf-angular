@@ -2,15 +2,15 @@
      <div class="acciones">
     <table>
         <tr>
-            <td><button id="buscarAnillo">Buscar Anillo</button></td>
-            <td><button id="crearAnillo">Crear Anillo</button></td>
+            <td><button id="buscarAnillo" routerLink="/buscar">Buscar Anillo</button></td>
+            <td><button id="crearAnillo" routerLink="/detalle">Crear Anillo</button></td>
         </tr>
     </table>
     </div>
     </div>
 
     <div class="busqueda">
-       <input type="text" pInputText [(ngModel)]="campoBusqueda" />
+       <input type="text" pInputText [(ngModel)]="campoBusqueda" (keyup.enter)="buscar()"/>
        <p-button label="Buscar Anillo" icon="pi pi-check"  (onClick)="buscar()" severity="danger" />
     </div>
 

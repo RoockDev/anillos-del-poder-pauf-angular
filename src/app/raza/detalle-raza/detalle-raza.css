@@ -1,11 +1,11 @@
 
 .card-formulario {
-    max-width: 500px;           
-    margin: 2rem auto;         
+    max-width: 600px;           
+    margin: 2rem auto;
     padding: 2rem;
-    background-color: #ffffff;  
-    border-radius: 12px;        
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     font-family: Arial, sans-serif;
 }
 
@@ -18,8 +18,8 @@ h2 {
 
 .campo {
     display: flex;
-    flex-direction: column; 
-    margin-bottom: 1.5rem;  
+    flex-direction: column;
+    margin-bottom: 1.5rem;
 }
 
 label {
@@ -28,12 +28,13 @@ label {
     color: #555;
 }
 
-input {
+
+input, textarea {
     width: 100%;
 }
 
 
-.error {
+small {
     color: #e24c4c;
     font-size: 0.85rem;
     margin-top: 0.25rem;
@@ -43,7 +44,12 @@ input {
 
 .botones {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     gap: 1rem;
     margin-top: 2rem;
+}
+
+
+::ng-deep .p-select {
+    width: 100%;
 }
