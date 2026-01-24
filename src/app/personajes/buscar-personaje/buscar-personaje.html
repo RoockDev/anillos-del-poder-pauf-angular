@@ -1,44 +1,38 @@
-
-
 <div class="tablaPersonajes">
- <div class="card flex justify-center">
-            <button pButton (click)="crearPersonaje()">
-                <i class="pi pi-check" pButtonIcon></i>
-                <span pButtonLabel>Crear Personaje</span>
-            </button>
-        </div>
-<table>
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Raza
-        </th>
-        <th>
-            Fecha Nacimiento
-        </th>
-        <th>
-            Acciones
-        </th>
+    
+    <div class="accion-superior">
+        <button (click)="crearPersonaje()">Crear Personaje</button>
+    </div>
+
+    <p-table [value]="personajes" [tableStyle]="{ 'min-width': '50rem' }">
         
-    </tr>
-    
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Fecha Nacimiento</th>
+                <th style="width: 200px; text-align: center;">Acciones</th>
+            </tr>
+        </ng-template>
 
-@for (item of personajes; track item.id) {
-    <tr>
-    <td>{{item.nombre}}</td>
-    <td>{{item.raza}}</td>
-    <td>{{item.fechaNacimiento}}</td>
-    <td><input type ="button" id="btnEditar" (click)="editar(item.id)"  value ="Editar"></td>
-  
-    
-    
-    </tr>
-} @empty {
-<li>no hay</li>
-}
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.raza }}</td>
+                <td>{{ item.fechaNacimiento }}</td>
+                <td style="text-align: center;">
+                    <div class="botones-accion">
+                        <button (click)="editar(item.id)">Editar</button>
+                        
+                        <button (click)="borrar(item.id)">Borrar</button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
 
+    </p-table>
 
-</table>
+    @if (personajes.length === 0) {
+        <p class="sin-datos">No se encontraron personajes.</p>
+    }
 </div>

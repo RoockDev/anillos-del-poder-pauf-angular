@@ -1,4 +1,50 @@
-<form>
-<label>Nombre:</label>
-<input type="text" value="" id="nombre"/>
-</form>
+<div class="barra-navegacion">
+    <button routerLink = "/buscar-personajes" class="btn-volver">
+        Volver 
+    </button>
+</div>
+    <div class="card-formulario">
+        <h2>{{esEdicion ? 'Editar Personaje' : 'Crear Nuevo Personaje'}}</h2>
+
+        <form [formGroup]="formulario" (ngSubmit) = "guardar()">
+            <div class="campo">
+                <label>Nombre</label>
+                <input pInputText type="text" formControlName="nombre" placeholder="Ej: Legolas"/>
+
+                @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+                    <small class="error">El nombre es obligatorio (min 3 letras)</small>
+                }
+
+            </div>
+
+            <div class="campo">
+                <label>Raza</label>
+                <input pInputText type="text" formControlName="raza" placeholder="Ej: Elfo" />
+            
+                @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
+                <small class="error">La raza es obligatoria.</small>
+                }
+            </div>
+
+            <div class="campo">
+                <label>Fecha de Nacimiento</label>
+                <p-datepicker
+                  formControlName="fechaNacimiento"
+                  dateFormat="dd/mm/yy"
+                  [showIcon]="true"
+                  placeholder="Selecciona una fecha">
+                </p-datepicker>
+
+                @if (formulario.get('fechaNacimiento')?.invalid && formulario.get('fechaNacimiento')?.touched) {
+                    <small class="error" >La fecha es obligatoria</small>
+                }
+            </div>
+            <div class="botones">
+                <button class="btn-guardar" type="submit">
+                    {{esEdicion? 'Actualizar': 'Guardar'}}
+                </button>
+            </div>
+
+
+        </form>
+    </div>

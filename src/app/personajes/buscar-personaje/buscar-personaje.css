@@ -1,0 +1,27 @@
+
+.accion-superior {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+
+.tablaPersonajes {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.botones-accion {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+}
+
+.sin-datos {
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+}

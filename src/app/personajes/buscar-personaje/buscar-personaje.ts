@@ -2,13 +2,17 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PersonajesService } from '../../servicios/personajes-service';
 import { Router } from '@angular/router';
 import {ButtonModule} from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-buscar-personaje',
-  imports: [ButtonModule],
+  standalone: true,
+  imports: [ButtonModule, TableModule],
   templateUrl: './buscar-personaje.html',
   styleUrl: './buscar-personaje.css',
 })
+
+
 export class BuscarPersonaje implements OnInit  {
   personajes: any [] = [];
   error = ''
@@ -18,7 +22,7 @@ export class BuscarPersonaje implements OnInit  {
   }
 
   editar(id:number){
-    alert(id)
+    
     this.route.navigate(["/editar",id]);
   }
 
@@ -30,6 +34,13 @@ export class BuscarPersonaje implements OnInit  {
     this.cargarPersonajes();
     
   }
+
+  borrar(id:number){
+    if (confirm("Quieres borrar el personaje?")) {
+      alert("Borrado personaje" + id);
+    }
+  }
+
 
   cargarPersonajes(){
     this.personajesService.obtenerPersonajes().subscribe({
