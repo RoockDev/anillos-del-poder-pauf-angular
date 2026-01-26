@@ -78,16 +78,32 @@ export class DetallePersonaje implements OnInit{
     }
 
     const datos = this.formulario.value
-    if (this.esEdicion) {
-      //aqui se llamará al back para updatear
-      console.log('Actualizando datos', this.idPersonaje,datos);
-      alert('perosonaje actualizado (no back aun)');
+    if (this.esEdicion && this.idPersonaje) {
+      this.personajesService.actualizarPersonaje(this.idPersonaje,datos).subscribe({
+        next: (response) => {
+          console.log('Personaje actualizado:', response)
+          alert('Personaje actualizado con exito')
+          this.router.navigate(['/buscar-personajes'])
+        },
+        error: (err) => {
+          console.log('error al actualizar',err)
+          alert('error al actualizar personaje')
+        } 
+      });
     }else{
-      //aqui se llamará al back para crear
-      console.log('Creando', datos);
-      alert('Personaje creado (no back aún)');
+      this.personajesService.crearPersonaje(datos).subscribe({
+        next: (response) => {
+          console.log('Personaje creado:', response)
+          alert('personaje creado bien')
+          this.router.navigate(['/buscar-personajes'])
+        },
+        error:(err) => {
+          console.log('Error al crear', err)
+          alert('error al crear')
+        }
+      })
     }
-    this.router.navigate(['/buscar-personaje']);
+    
   }
 
   volver(){
