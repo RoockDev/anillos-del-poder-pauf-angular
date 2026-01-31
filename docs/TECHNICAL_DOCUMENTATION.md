@@ -135,5 +135,4 @@ Todos los formularios usan **Reactive Forms** con validaciones.
 
 ---
 
-> Si necesitas diagramas visuales (componentes, flujo de datos, etc.) se pueden añadir en una
-> carpeta `/docs/diagrams/` más adelante.
+
