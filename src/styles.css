@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tus imports de PrimeNG (si los tienes) */
+
+
+/* AÑADE ESTO PARA LOS ICONOS: */
+@import "primeicons/primeicons.css";
 .hero {
   height: 300px;
   background-image: url("./assets/img/fondoCabecera.jpg");

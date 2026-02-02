@@ -1,30 +1,75 @@
 <div class="tablaPersonajes">
     
+    <p-toast></p-toast>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
     <div class="accion-superior">
-        <button (click)="crearPersonaje()">Crear Personaje</button>
+        <button pButton label="Crear Personaje" icon="pi pi-plus" (click)="crearPersonaje()"></button>
     </div>
 
-    <p-table [value]="personajes" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="personajes" [tableStyle]="{ 'min-width': '60rem' }">
         
         <ng-template pTemplate="header">
             <tr>
                 <th>Nombre</th>
                 <th>Raza</th>
                 <th>Fecha Nacimiento</th>
-                <th style="width: 200px; text-align: center;">Acciones</th>
+                <th>Estado</th>
+                <th style="text-align: center;">Acciones</th>
             </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-item>
-            <tr>
+            <tr [ngClass]="{'fila-baja': item.fechaBaja}">
                 <td>{{ item.nombre }}</td>
                 <td>{{ item.raza }}</td>
                 <td>{{ item.fechaNacimiento }}</td>
+                
+                <td>
+                    @if (item.fechaBaja) {
+                        <span style="color: red; font-weight: bold;">BAJA ({{item.fechaBaja | date:'dd/MM/yy'}})</span>
+                    } @else {
+                        <span style="color: green; font-weight: bold;">ACTIVO</span>
+                    }
+                </td>
+
                 <td style="text-align: center;">
-                    <div class="botones-accion">
-                        <button (click)="editar(item.id)">Editar</button>
+                    <div class="botones-accion" style="display: flex; justify-content: center; gap: 0.5rem;">
                         
-                        <button (click)="borrar(item.id)">Borrar</button>
+                        <p-button 
+                            label="Editar" 
+                            icon="pi pi-file-edit" 
+                            styleClass="p-button-rounded p-button-warning p-button-text" 
+                            (click)="editar(item.id)"
+                            pTooltip="Editar datos del personaje">
+                        </p-button>
+                        
+                        <p-button 
+                            label="Borrar BD" 
+                            icon="pi pi-trash" 
+                            styleClass="p-button-rounded p-button-danger p-button-text" 
+                            (click)="confirmarBajaFisica($event, item.id)"
+                            pTooltip="Eliminar definitivamente">
+                        </p-button>
+
+                        @if (item.fechaBaja) {
+                            <p-button 
+                                label="Reactivar" 
+                                icon="pi pi-refresh" 
+                                styleClass="p-button-rounded p-button-success p-button-text" 
+                                (click)="confirmarAccionLogica($event, item)"
+                                 pTooltip="Dale una nueva oportunidad a este personaje">
+                            </p-button>
+                        } @else {
+                            <p-button 
+                                label="Dar de baja" 
+                                icon="pi pi-box" 
+                                styleClass="p-button-rounded p-button-secondary p-button-text" 
+                                (click)="confirmarAccionLogica($event, item)"
+                                pTooltip="Dar de baja lógica">
+                            </p-button>
+                        }
+
                     </div>
                 </td>
             </tr>

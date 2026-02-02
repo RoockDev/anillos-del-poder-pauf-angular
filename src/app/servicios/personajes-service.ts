@@ -24,6 +24,18 @@ export class PersonajesService {
       return this.http.post<any>(`${this.baseUrl}insertarPersonaje`, personaje)
     }
 
+    borrarFisico(id:number): Observable<any>{
+      return this.http.delete(`${this.baseUrl}bajaFisica/${id}`);
+    }
+
+    borrarLogico(id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}bajaLogica/${id}`, {});
+  }
+
+  reactivar(id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}reactivar/${id}`, {});
+  }
+
 
 
 
