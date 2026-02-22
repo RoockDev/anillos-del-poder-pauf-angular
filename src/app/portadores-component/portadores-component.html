@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <td><label>Nombre del portador</label></td>
+    <td><input type="text" [(ngModel)]="nombrePortador" /></td>
+
+    <td><label>Nombre del anillo</label></td>
+    <td><input type="text" [(ngModel)]="nombreAnillo" /></td>
+  </tr>
+
+  <tr>
+    <td><label>Nivel de corrupcion:</label></td>
+    <td><input type="number" [(ngModel)]="nivel" /></td>
+
+    <td><label>Raza</label></td>
+    <td><input type="text" [(ngModel)]="raza" /></td>
+  </tr>
+</table>
+
+<div class="botonera">
+  <input type="button" value="Guardar Datos" (click)="guardarDatos()" />
+  <input type="button" value="Limpiar Datos" (click)="limpiarDatos()" />
+</div>

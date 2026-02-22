@@ -1,0 +1,96 @@
+.estadisticas {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f4f4f4;
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
+  color: #1f1f1f;
+}
+
+.estadisticas h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #1e1e1e;
+}
+
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.valor {
+  margin: 0.3rem 0 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #151515;
+}
+
+.acciones {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.acciones button {
+  border: 1px solid #b89654;
+  background: #fffaf0;
+  color: #6f5726;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.acciones button:hover {
+  background: #efe1bf;
+  color: #3a2c12;
+}
+
+.sin-datos {
+  text-align: center;
+  color: #666;
+}
+
+.estadisticas table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+/* Sobrescribe los bordes globales de src/styles.css (tbody/tr) */
+.estadisticas tbody,
+.estadisticas tr {
+  border: none !important;
+}
+
+.estadisticas th,
+.estadisticas td {
+  border: 1px solid #d7d7d7 !important;
+  padding: 0.55rem;
+  text-align: center;
+  color: #1f1f1f;
+}
+
+.estadisticas th {
+  background: #ececec;
+  font-weight: 700;
+}
+
+.estadisticas tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}

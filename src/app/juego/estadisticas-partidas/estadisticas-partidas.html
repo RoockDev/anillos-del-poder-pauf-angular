@@ -1,0 +1,51 @@
+<section class="estadisticas">
+  <h2>Estadisticas de partidas</h2>
+
+  <div class="resumen">
+    <div class="card">
+      <p class="label">Jugadas</p>
+      <p class="valor">{{ resumen.jugadas }}</p>
+    </div>
+    <div class="card">
+      <p class="label">Victorias</p>
+      <p class="valor">{{ resumen.victorias }}</p>
+    </div>
+    <div class="card">
+      <p class="label">Derrotas</p>
+      <p class="valor">{{ resumen.derrotas }}</p>
+    </div>
+    <div class="card">
+      <p class="label">% Victoria</p>
+      <p class="valor">{{ porcentajeVictorias }}%</p>
+    </div>
+  </div>
+
+  <div class="acciones">
+    <button type="button" (click)="limpiarHistorial()">Limpiar historial</button>
+  </div>
+
+  @if (historial.length === 0) {
+    <p class="sin-datos">Aun no hay partidas registradas.</p>
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha inicio</th>
+          <th>Fecha fin</th>
+          <th>Correctas</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of historial; track item.idPartida) {
+          <tr>
+            <td>{{ item.fechaInicio }}</td>
+            <td>{{ item.fechaFin }}</td>
+            <td>{{ item.correctas }}</td>
+            <td>{{ item.resultado }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

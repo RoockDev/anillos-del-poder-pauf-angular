@@ -1,0 +1,35 @@
+<section class="juego">
+  <h2>Trivial Fran - El Señor de los anillos</h2>
+
+  <div class="acciones-inicio">
+    <button type="button" (click)="empezarPartida()" [disabled]="procesando || partidaEnCurso">
+      Empezar partida
+    </button>
+  </div>
+
+  <p class="mensaje" [ngClass]="'mensaje-' + mensajeTipo">{{ mensaje }}</p>
+
+  @if (partidaActual) {
+    <div class="estado-partida">
+      <p><strong>Aciertos:</strong> {{ partidaActual.numeroCorrectas }}</p>
+      <p><strong>En curso:</strong> {{ partidaEnCurso ? 'Si' : 'No' }}</p>
+    </div>
+  }
+
+  @if (preguntaActual) {
+    <div class="bloque-pregunta">
+      <h3 class="texto-pregunta">{{ preguntaTexto }}</h3>
+
+      <div class="respuestas">
+        @for (opcion of opcionesRespuesta; track $index) {
+          <button
+            type="button"
+            (click)="responder($index + 1)"
+            [disabled]="procesando">
+            {{ $index + 1 }}. {{ opcion }}
+          </button>
+        }
+      </div>
+    </div>
+  }
+</section>
